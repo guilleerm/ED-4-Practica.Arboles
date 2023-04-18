@@ -2,7 +2,7 @@ package arbolNario;
 
 public class Pruebas {
 	
-	// Pruebas ------------------------------------------------------------hola
+	// Pruebas ------------------------------------------------------------
 	public static void main(String[] args) {
 		Pruebas pruebas = new Pruebas();
 		pruebas.ejecutar();
