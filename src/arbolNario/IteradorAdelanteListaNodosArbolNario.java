@@ -4,8 +4,7 @@ public class IteradorAdelanteListaNodosArbolNario {
 
 	private NodoListaNodosArbolNario actual;
 
-	public IteradorAdelanteListaNodosArbolNario(
-			NodoListaNodosArbolNario comienzo) {
+	public IteradorAdelanteListaNodosArbolNario(NodoListaNodosArbolNario comienzo) {
 		actual = comienzo;
 	}
 
