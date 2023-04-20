@@ -19,8 +19,7 @@ public class ListaNodosArbolNario {
 	 * Inserta el dato en la última posición de la lista
 	 */
 	public void insertar(NodoArbolNario dato) {
-		NodoListaNodosArbolNario nuevo = new NodoListaNodosArbolNario(dato,
-				fin, null);
+		NodoListaNodosArbolNario nuevo = new NodoListaNodosArbolNario(dato, fin, null);
 		if (this.vacia()) {
 			inicio = nuevo;
 		} else {
