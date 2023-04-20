@@ -53,7 +53,18 @@ public class ArbolNario {
 	// TODO 2.4: Mostrar el arbol recorriendo en amplitud de forma ITERATIVA
 	public void mostrarAmplitud() {
 		System.out.print("Amplitud: ");
-
+		if(raiz!=null){
+			ColaNodosArbolNario cola = new ColaNodosArbolNario();
+			cola.encolar(raiz);
+			while(!cola.vacia()) {
+				NodoArbolNario nodo = cola.desencolar();
+				System.out.print(nodo.getDato() + " ");
+				IteradorAdelanteListaNodosArbolNario it = nodo.getHijos().getIteradorAdelante();
+				while (it.hasNext())
+					cola.encolar(it.next());
+			}
+			System.out.print("\n");
+		}
 		System.out.println();
 	}
 }
