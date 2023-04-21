@@ -46,17 +46,14 @@ public class ArbolBinarioBusqueda {
 	// ------------------------------------------------------------------------
 	// TODO 3.2: Devuelve el numero de nodos del arbol de forma RECURSIVA
 	public int getNumElementos() {
-		int num = 0;
-		num = this.getNumElementos(raiz, num);
-		return num;
+		return this.getNumElementos(raiz);
 	}
 
-	private  int getNumElementos(NodoArbol nodo, int num){
+	private  int getNumElementos(NodoArbol nodo){
 		if(nodo != null) {
-			this.getNumElementos(nodo.getIzquierdo(), num+1);
-			this.getNumElementos(nodo.getDerecho(), num+1);
+			return 1 + this.getNumElementos(nodo.getIzquierdo()) + this.getNumElementos(nodo.getDerecho());
 		}
-		return num;
+		return 0;
 	}
 
 
@@ -64,14 +61,33 @@ public class ArbolBinarioBusqueda {
 	// TODO 3.3: Devuelve el numero de nodos del arbol con clave
 	// menor a una clave dada de forma RECURSIVA
 	public int getNumMenores(int clave) {
-		return 0;
+		return getNumMenores(raiz, clave);
 	}
 
+	private int getNumMenores(NodoArbol nodo, int clave){
+		if(nodo == null) {
+			return 0;
+		}
+		if(nodo.getDato().getMatricula() < clave) {
+			return 1 + this.getNumMenores(nodo.getIzquierdo(), clave) + this.getNumMenores(nodo.getDerecho(), clave);
+		}else
+			return this.getNumMenores(nodo.getIzquierdo(), clave);
+
+	}
 
 	// ------------------------------------------------------------------------
 	// TODO 3.4: Devuelve el elemento con la menor clave de forma RECURSIVA
 	public Alumno getMenorElemento() {
-		return null;
+		return getMenorElemento(raiz);
+	}
+	private Alumno getMenorElemento(NodoArbol nodo){
+		if (nodo == null) {
+			return null;
+		}
+		if(nodo.getIzquierdo() == null) {
+			return nodo.getDato();
+		}
+		return this.getMenorElemento(nodo.getIzquierdo());
 	}
 
 
@@ -79,8 +95,27 @@ public class ArbolBinarioBusqueda {
 	// TODO 3.5: Devuelve el número de nodos del árbol con clave mayor que
 	// claveMinimo y menor que claveMaximo
 	public int getNumIntermedios(int claveMinimo, int claveMaximo) {
-		return 0;
+		return getNumIntermedios(raiz, claveMinimo, claveMaximo);
 	}
 
+	private int getNumIntermedios(NodoArbol nodo, int claveMinimo, int claveMaximo){
+		if (nodo == null) {
+			return 0;
+		}
+		int contador = 0;
+		int claveActual = nodo.getDato().getMatricula();
+		if (claveActual > claveMinimo && claveActual < claveMaximo) {
+			contador++;
+			contador += getNumIntermedios(nodo.getIzquierdo(), claveMinimo, claveMaximo);
+			contador += getNumIntermedios(nodo.getDerecho(), claveMinimo, claveMaximo);
+		} else if (claveActual <= claveMinimo) {
+			contador += getNumIntermedios(nodo.getDerecho(), claveMinimo, claveMaximo);
+		} else if (claveActual >= claveMaximo) {
+			contador += getNumIntermedios(nodo.getIzquierdo(), claveMinimo, claveMaximo);
+		}
+		return contador;
+	}
 
 }
+
+
