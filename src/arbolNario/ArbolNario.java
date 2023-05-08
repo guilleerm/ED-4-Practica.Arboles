@@ -23,7 +23,7 @@ public class ArbolNario {
 	private void mostrarProfundidadRecursivo(NodoArbolNario nodo){
 		System.out.print(nodo.getDato() + " ");
 		IteradorAdelanteListaNodosArbolNario it = nodo.getHijos().getIteradorAdelante();
-		while(nodo!=null && it.hasNext()){
+		while(it.hasNext()){
 			NodoArbolNario nodo2 = it.next();
 			this.mostrarProfundidadRecursivo(nodo2);
 		}
@@ -44,7 +44,7 @@ public class ArbolNario {
 				while (it.hasPrevious())
 					pila.apilar(it.previous());
 			}
-			System.out.print("\n");
+			System.out.println();
 		}
 
 	}

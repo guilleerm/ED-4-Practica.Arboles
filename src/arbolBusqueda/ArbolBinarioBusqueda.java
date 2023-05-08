@@ -49,10 +49,9 @@ public class ArbolBinarioBusqueda {
 		return this.getNumElementos(raiz);
 	}
 
-	private  int getNumElementos(NodoArbol nodo){
-		if(nodo != null) {
+	private int getNumElementos(NodoArbol nodo){
+		if(nodo != null)
 			return 1 + this.getNumElementos(nodo.getIzquierdo()) + this.getNumElementos(nodo.getDerecho());
-		}
 		return 0;
 	}
 
@@ -68,9 +67,9 @@ public class ArbolBinarioBusqueda {
 		if(nodo == null) {
 			return 0;
 		}
-		if(nodo.getDato().getMatricula() < clave) {
+		if(nodo.getDato().getMatricula() < clave)
 			return 1 + this.getNumMenores(nodo.getIzquierdo(), clave) + this.getNumMenores(nodo.getDerecho(), clave);
-		}else
+		else
 			return this.getNumMenores(nodo.getIzquierdo(), clave);
 
 	}
@@ -81,12 +80,12 @@ public class ArbolBinarioBusqueda {
 		return getMenorElemento(raiz);
 	}
 	private Alumno getMenorElemento(NodoArbol nodo){
-		if (nodo == null) {
+		if (nodo == null)
 			return null;
-		}
-		if(nodo.getIzquierdo() == null) {
+
+		if(nodo.getIzquierdo() == null)
 			return nodo.getDato();
-		}
+
 		return this.getMenorElemento(nodo.getIzquierdo());
 	}
 
