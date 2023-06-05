@@ -20,24 +20,23 @@ public class ArbolNario {
 		System.out.println();
 	}
 
-	private void mostrarProfundidadRecursivo(NodoArbolNario nodo){
+	private void mostrarProfundidadRecursivo(NodoArbolNario nodo) {
 		System.out.print(nodo.getDato() + " ");
 		IteradorAdelanteListaNodosArbolNario it = nodo.getHijos().getIteradorAdelante();
-		while(it.hasNext()){
+		while (it.hasNext()) {
 			NodoArbolNario nodo2 = it.next();
 			this.mostrarProfundidadRecursivo(nodo2);
 		}
 	}
 
-
 	// ------------------------------------------------------------------------
 	// TODO 2.3: Mostrar el arbol recorriendo en profundidad de forma ITERATIVA
 	public void mostrarProfundidadIterativo() {
 		System.out.print("Profundidad Iterativo: ");
-		if(raiz!=null){
+		if (raiz != null) {
 			PilaNodosArbolNario pila = new PilaNodosArbolNario();
 			pila.apilar(raiz);
-			while(!pila.vacia()) {
+			while (!pila.vacia()) {
 				NodoArbolNario nodo = pila.desapilar();
 				System.out.print(nodo.getDato() + " ");
 				IteradorAtrasListaNodosArbolNario it = nodo.getHijos().getIteradorAtras();
@@ -53,10 +52,10 @@ public class ArbolNario {
 	// TODO 2.4: Mostrar el arbol recorriendo en amplitud de forma ITERATIVA
 	public void mostrarAmplitud() {
 		System.out.print("Amplitud: ");
-		if(raiz!=null){
+		if (raiz != null) {
 			ColaNodosArbolNario cola = new ColaNodosArbolNario();
 			cola.encolar(raiz);
-			while(!cola.vacia()) {
+			while (!cola.vacia()) {
 				NodoArbolNario nodo = cola.desencolar();
 				System.out.print(nodo.getDato() + " ");
 				IteradorAdelanteListaNodosArbolNario it = nodo.getHijos().getIteradorAdelante();

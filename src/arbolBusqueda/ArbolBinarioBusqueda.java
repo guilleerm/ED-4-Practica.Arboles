@@ -27,21 +27,20 @@ public class ArbolBinarioBusqueda {
 		raiz = this.insertarRec(raiz, dato);
 	}
 
-	private NodoArbol insertarRec(NodoArbol nodo, Alumno dato){
-		if (nodo == null) {     // Crear nuevo nodo
+	private NodoArbol insertarRec(NodoArbol nodo, Alumno dato) {
+		if (nodo == null) { // Crear nuevo nodo
 			nodo = new NodoArbol(dato);
-		} else if (dato.getMatricula() < nodo.getDato().getMatricula()) {    // Subárbol izquierdo
+		} else if (dato.getMatricula() < nodo.getDato().getMatricula()) { // Subárbol izquierdo
 			NodoArbol nuevoIzq = this.insertarRec(nodo.getIzquierdo(), dato);
 			nodo.setIzquierdo(nuevoIzq);
-		} else if (dato.getMatricula() > nodo.getDato().getMatricula()) {    // Subárbol derecho
+		} else if (dato.getMatricula() > nodo.getDato().getMatricula()) { // Subárbol derecho
 			NodoArbol nuevoDer = this.insertarRec(nodo.getDerecho(), dato);
 			nodo.setDerecho(nuevoDer);
-		} else {      // Clave repetida
+		} else { // Clave repetida
 			System.out.println("Error. El alumno con matrícula " + dato.getMatricula() + " ya existe");
 		}
-		return nodo;    // Devolver la nueva raíz del subárbol
+		return nodo; // Devolver la nueva raíz del subárbol
 	}
-
 
 	// ------------------------------------------------------------------------
 	// TODO 3.2: Devuelve el numero de nodos del arbol de forma RECURSIVA
@@ -49,12 +48,11 @@ public class ArbolBinarioBusqueda {
 		return this.getNumElementos(raiz);
 	}
 
-	private int getNumElementos(NodoArbol nodo){
-		if(nodo != null)
+	private int getNumElementos(NodoArbol nodo) {
+		if (nodo != null)
 			return 1 + this.getNumElementos(nodo.getIzquierdo()) + this.getNumElementos(nodo.getDerecho());
 		return 0;
 	}
-
 
 	// ------------------------------------------------------------------------
 	// TODO 3.3: Devuelve el numero de nodos del arbol con clave
@@ -63,11 +61,11 @@ public class ArbolBinarioBusqueda {
 		return getNumMenores(raiz, clave);
 	}
 
-	private int getNumMenores(NodoArbol nodo, int clave){
-		if(nodo == null) {
+	private int getNumMenores(NodoArbol nodo, int clave) {
+		if (nodo == null) {
 			return 0;
 		}
-		if(nodo.getDato().getMatricula() < clave)
+		if (nodo.getDato().getMatricula() < clave)
 			return 1 + this.getNumMenores(nodo.getIzquierdo(), clave) + this.getNumMenores(nodo.getDerecho(), clave);
 		else
 			return this.getNumMenores(nodo.getIzquierdo(), clave);
@@ -79,16 +77,16 @@ public class ArbolBinarioBusqueda {
 	public Alumno getMenorElemento() {
 		return getMenorElemento(raiz);
 	}
-	private Alumno getMenorElemento(NodoArbol nodo){
+
+	private Alumno getMenorElemento(NodoArbol nodo) {
 		if (nodo == null)
 			return null;
 
-		if(nodo.getIzquierdo() == null)
+		if (nodo.getIzquierdo() == null)
 			return nodo.getDato();
 
 		return this.getMenorElemento(nodo.getIzquierdo());
 	}
-
 
 	// ------------------------------------------------------------------------
 	// TODO 3.5: Devuelve el número de nodos del árbol con clave mayor que
@@ -97,7 +95,7 @@ public class ArbolBinarioBusqueda {
 		return getNumIntermedios(raiz, claveMinimo, claveMaximo);
 	}
 
-	private int getNumIntermedios(NodoArbol nodo, int claveMinimo, int claveMaximo){
+	private int getNumIntermedios(NodoArbol nodo, int claveMinimo, int claveMaximo) {
 		if (nodo == null) {
 			return 0;
 		}
@@ -116,5 +114,3 @@ public class ArbolBinarioBusqueda {
 	}
 
 }
-
-
